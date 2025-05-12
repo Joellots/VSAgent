@@ -13,9 +13,8 @@ SERVER CONFIGURATION
 	# Debian / Ubuntu
 	apt install php7.0-fpm php7.0-sqlite sqlite
 
-    # Copy the vsagent-504 server files to /opt/course_www
-        cp ~/vsagent-504 /opt/course_www/
-
+    # Copy the vsagent-504 server files to /var/www/
+        cp ~/vsagent-504 /var/www/
     # Edit the default nginx config file
 	location ~ \.php$ {
             include snippets/fastcgi-php.conf
@@ -23,10 +22,15 @@ SERVER CONFIGURATION
         }
 
     # Modify ownership of web files
-        chown -R www-data:www-data /opt/course_www/vsagent-504
+        chown -R www-data:www-data /var/www/vsagent-504
 
     # Trash the existing database
-        rm /opt/course_www/vsagent-504/server/data.db
+        rm /var/www/vsagent-504/server/data.db
+
+    # Modify Nginx configuration (/etc/nginx/site-enabled/default
+    root /var/www/vsagent-504;
+    index vssvc.php;
+    server_name _;
 
     # Restart nginx
         service nginx restart 
@@ -34,7 +38,7 @@ SERVER CONFIGURATION
 ISSUES
 ------
     # If something goes wrong, try removing the database and allowing the server to recreate it:
-        rm -f /opt/course_www/html/vsagent-504/data.db
+        rm -f /var/www/vsagent-504/data.db
 
 USAGE
 -----
