@@ -15,6 +15,7 @@ SERVER CONFIGURATION
 
     # Copy the vsagent-504 server files to /var/www/
         cp ~/vsagent-504 /var/www/
+	
     # Edit the default nginx config file
 	location ~ \.php$ {
             include snippets/fastcgi-php.conf
