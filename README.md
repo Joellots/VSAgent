@@ -28,7 +28,7 @@ SERVER CONFIGURATION
     # Trash the existing database
         rm /var/www/vsagent-504/server/data.db
 
-    # Modify Nginx configuration (/etc/nginx/site-enabled/default
+    # Modify Nginx configuration (/etc/nginx/site-enabled/default)
     root /var/www/vsagent-504;
     index vssvc.php;
     server_name _;
